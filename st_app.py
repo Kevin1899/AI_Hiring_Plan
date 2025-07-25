@@ -3,7 +3,7 @@ import os
 from openai import OpenAI
 
 # Set your OpenAI API key
-openai_api_key = "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"
+openai_api_key = os.getenv(OPENAI_API_KEY)
 client = OpenAI(api_key=openai_api_key)
 
 st.set_page_config(page_title="AI Hiring Planner", layout="centered")
