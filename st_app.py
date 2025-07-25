@@ -4,7 +4,7 @@ from openai import OpenAI
 
 # Set your OpenAI API key
 
-client = OpenAI(api_key=os.getenv(OPENAI_API_KEY))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 st.set_page_config(page_title="AI Hiring Planner", layout="centered")
 st.title("🤖 AI Hiring Strategy Planner")
