@@ -44,7 +44,7 @@ with st.form("hiring_form"):
 if submitted and total_dist == 100:
     prompt = f"""
     Create a hiring strategy based on the following inputs:
-
+    
     - Projected Growth Rate: {growth_rate}% over the next {growth_timeline}.
     - Growth Distribution:
       - {dist_0_1}% in 0–1 months,
@@ -54,9 +54,48 @@ if submitted and total_dist == 100:
     - Attrition Rate: {attrition_rate}% annually.
     - Speed to Hire: {speed_to_hire} weeks per role.
     - Average Employee Tenure: {tenure_years} years and {tenure_months} months.
-
-    Calculate how many hires are needed (for growth and attrition), when hiring should start, and provide AI-based recommendations for reducing time to hire and increasing retention.
-    Output a JSON plan along with a readable explanation.
+    
+    Your response must follow this format:
+    1. **Understanding Growth and Attrition Needs**
+       - Clearly calculate new hires for growth and attrition separately.
+       - Show total hires needed.
+    
+    2. **Growth Distribution Timeline**
+       - For each phase (0–1 mo, 1–3 mo, 3–6 mo), break down:
+         - Number of hires for growth
+         - Number of hires for attrition
+         - Total hires
+    
+    3. **Hiring Timeline**
+       - Show monthly or phase-wise hire totals (e.g., Month 0–1: X hires).
+    
+    4. **Recommendations**
+       - List 2–3 strategies for reducing time to hire
+       - List 2–3 strategies to increase retention
+    
+    5. **JSON Plan**
+       - Provide a valid JSON object with the full plan in this structure:
+         {{
+           "hiring_plan": {{
+             "current_headcount": ...,
+             "projected_growth_rate": ...,
+             "total_hires_needed": ...,
+             "hiring_timeline": {{
+               "0-1_months": {{ "growth_hires": ..., "attrition_hires": ..., "total_hires": ... }},
+               "1-3_months": {{ ... }},
+               ...
+             }},
+             "strategies": {{
+               "reduce_time_to_hire": [...],
+               "increase_retention": [...]
+             }}
+           }}
+         }}
+    
+    6. **Readable Explanation**
+       - Summarize the entire strategy in simple bullet points for a human reader.
+    
+    Use clear formatting with headings, bullet points, and avoid mixing sections.
     """
 
     with st.spinner("🔍 Generating hiring strategy using GPT-4o-mini..."):
