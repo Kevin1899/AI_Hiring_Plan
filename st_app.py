@@ -95,7 +95,9 @@ if submitted and total_dist == 100:
     6. **Readable Explanation**
        - Summarize the entire strategy in simple bullet points for a human reader.
     
-    Use clear formatting with headings, bullet points, and avoid mixing sections.
+    Note:
+    - Use clear formatting with headings, bullet points, and avoid mixing sections.
+    - All the results should be in perfect markdown format.
     """
 
     with st.spinner("🔍 Generating hiring strategy using GPT-4o-mini..."):
