@@ -43,6 +43,7 @@ with st.form("hiring_form"):
 # --- Prompt Construction & Model Call ---
 if submitted and total_dist == 100:
     prompt = f"""
+    Do NOT use LaTeX or math formatting (like \\text, \\frac, \\times). Output plain math equations with standard symbols (like *, /).
     Create a hiring strategy based on the following inputs:
     
     - Projected Growth Rate: {growth_rate}% over the next {growth_timeline}.
